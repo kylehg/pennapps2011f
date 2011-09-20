@@ -147,6 +147,9 @@ $beer = array(
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
   <script type="text/javascript" src="http://use.typekit.com/lua6zxk.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
 </head>
 <!-- Bacon ipsum dolor sit amet sirloin pancetta beef ribs ball tip, shoulder hamburger tri-tip short ribs. Short loin shank meatball, jowl bresaola ribeye meatloaf filet mignon turducken drumstick pig. Pork loin tail pork chop, tri-tip ribeye corned beef spare ribs jowl ham shankle. Pork loin ham beef ribs andouille turkey.-->
 <body>
@@ -173,6 +176,16 @@ $beer = array(
 	<div id="container">
 		<nav id="controls">
 		  <ul>
+<?php if (!$user_id) { ?>
+<script>
+$(document).ready(function() {
+$("#controls li a").click(function(e) {
+  e.preventDefault();
+  alert("You must be logged into Facebook!");
+});
+});
+</script>
+<?php } ?>
 			<li id="up-btn"><a href="/?action=up&last=<?= $beer['h_id'] ?>"><img alt="Cheers!" src="img/up.png"/></a></li>
 			<li id="next-btn"><a href="/?action=next&last=<?= $beer['h_id'] ?>"><img alt="Next &raquo;" src="img/arrow.png"/></a></li>
 			<li id="dn-btn"><a href="/?action=down&last=<?= $beer['h_id'] ?>"><img alt="Blech!" src="img/down.png"/></a></li>
@@ -200,8 +213,6 @@ $beer = array(
 
 
 <!-- SCRIPTS -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
 
 
 <script defer src="js/plugins.js"></script>
